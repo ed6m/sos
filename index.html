@@ -24,10 +24,12 @@
 
         input[type="number"] {
             padding: 10px;
-            width: 200px;
+            width: 100%; /* Make input responsive */
+            max-width: 300px; /* Set a max width */
             border: 2px solid #4CAF50;
             border-radius: 5px;
             margin-right: 10px;
+            box-sizing: border-box; /* Include padding in width */
         }
 
         button {
@@ -56,9 +58,29 @@
             border-radius: 5px;
             padding: 15px;
             margin: 5px;
-            width: 250px;
+            width: 90%; /* Make result frames responsive */
+            max-width: 300px; /* Set a max width */
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px; /* Adjust heading size for smaller screens */
+            }
+
+            label {
+                font-size: 16px; /* Adjust label size */
+            }
+
+            input[type="number"] {
+                margin-bottom: 10px; /* Add margin for better spacing */
+            }
+
+            button {
+                width: 100%; /* Make button full width */
+            }
         }
     </style>
 </head>
@@ -81,19 +103,19 @@
                 // العملية 1
                 const result1 = Math.pow(Math.sqrt(number) + 0.25, 2).toFixed(2);
                 results.push(`وقت الافتتاح: ${number.toFixed(2)}`);
-                results.push(`حرف A: ${result1}`);
+                results.push(` A: ${result1}`);
 
                 // العملية 2
                 const result2 = Math.pow(Math.sqrt(number) - 0.25, 2).toFixed(2);
-                results.push(`حرف B: ${result2}`);
+                results.push(` B: ${result2}`);
 
                 // العملية 3
                 const result3 = Math.pow(Math.sqrt(number) + 0.125, 2).toFixed(2);
-                results.push(`حرف C: ${result3}`);
+                results.push(` C: ${result3}`);
 
                 // العملية 4
                 const result4 = Math.pow(Math.sqrt(number) - 0.125, 2).toFixed(2);
-                results.push(`حرف D: ${result4}`);
+                results.push(` D: ${result4}`);
             } else {
                 results.push('يرجى إدخال رقم صالح.');
             }
