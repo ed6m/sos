@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عمليات الجذر التربيعي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            width: 200px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .result-frame {
+            background-color: white;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 5px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>حاسبة العمليات الرياضية</h1>
+    <label for="numberInput">ادخل رقماً:</label>
+    <input type="number" id="numberInput" required>
+    <button onclick="calculate()">أظهر النتائج</button>
+
+    <div class="result" id="results"></div>
+
+    <script>
+        function calculate() {
+            const input = document.getElementById('numberInput').value;
+            const number = parseFloat(input);
+            const results = [];
+
+            if (!isNaN(number)) {
+                // العملية 1
+                const result1 = Math.pow(Math.sqrt(number) + 0.25, 2).toFixed(2);
+                results.push(`وقت الافتتاح: ${number.toFixed(2)}`);
+                results.push(`حرف A: ${result1}`);
+
+                // العملية 2
+                const result2 = Math.pow(Math.sqrt(number) - 0.25, 2).toFixed(2);
+                results.push(`حرف B: ${result2}`);
+
+                // العملية 3
+                const result3 = Math.pow(Math.sqrt(number) + 0.125, 2).toFixed(2);
+                results.push(`حرف C: ${result3}`);
+
+                // العملية 4
+                const result4 = Math.pow(Math.sqrt(number) - 0.125, 2).toFixed(2);
+                results.push(`حرف D: ${result4}`);
+            } else {
+                results.push('يرجى إدخال رقم صالح.');
+            }
+
+            // Clear previous results
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            // Create a frame for each result
+            results.forEach(result => {
+                const frame = document.createElement('div');
+                frame.className = 'result-frame';
+                frame.textContent = result;
+                resultsContainer.appendChild(frame);
+            });
+        }
+    </script>
+</body>
+
+</html>
